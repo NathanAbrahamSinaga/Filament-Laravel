@@ -27,4 +27,14 @@ class Post extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+
+    public function authors()
+    {
+        return $this->belongsToMany(User::class, 'post_user')->withPivot(['order'])->withTimestamps();
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

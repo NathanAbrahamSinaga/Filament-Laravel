@@ -27,7 +27,7 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                ColorPicker::make('name'),
+                TextInput::make('name')->required(),
                 TextInput::make('email')->email(),
                 TextInput::make('password')->password()->visibleOn('create'),
             ]);
