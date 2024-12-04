@@ -20,9 +20,11 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-folder';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $modelLabel = 'Post Categories';
+    protected static ?string $modelLabel = 'Categories';
+
+    protected static bool $shouldSkipAuthorization = true;
 
     public static function form(Form $form): Form
     {

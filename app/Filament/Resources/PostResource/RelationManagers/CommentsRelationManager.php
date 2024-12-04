@@ -31,6 +31,7 @@ class CommentsRelationManager extends RelationManager
             ->recordTitleAttribute('comment')
             ->columns([
                 Tables\Columns\TextColumn::make('comment'),
+                Tables\Columns\TextColumn::make('user.name'),
             ])
             ->filters([
                 //

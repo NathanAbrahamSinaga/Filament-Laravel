@@ -28,8 +28,15 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')->required(),
-                TextInput::make('email')->email(),
-                TextInput::make('password')->password()->visibleOn('create'),
+                TextInput::make('email')->email()->required(),
+                TextInput::make('password')
+                    ->password()
+                    ->visibleOn('create')
+                    ->required(fn (string $context): bool => $context === 'create'),
+                Select::make('role')
+                    ->options(User::ROLES)
+                    ->default(User::ROLE_DEFAULT)
+                    ->required(),
             ]);
     }
 
@@ -39,6 +46,7 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('email'),
+                TextColumn::make('role'),
             ])
             ->filters([
                 //
